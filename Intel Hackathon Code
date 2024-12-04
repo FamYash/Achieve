@@ -1,0 +1,402 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <time.h>
+#include <unistd.h>
+
+struct Person
+{
+    char name[50];
+    int age;
+    char gender;
+    float weight;
+    float height;
+    char contactNumber[11];
+    int isValid;
+    char motherContactNumber[11];
+    char fatherContactNumber[11];
+};
+
+void collectUserData(struct Person *user) 
+{
+    printf("Enter user name: ");
+    fgets(user->name, sizeof(user->name), stdin);
+    user->name[strcspn(user->name, "\n")] = 0;
+
+    printf("Enter age: ");
+    scanf("%d", &user->age);
+
+    printf("Select your gender (M/F/O): ");
+    scanf(" %c", &user->gender);
+    switch (user->gender) 
+    {
+        case 'M':
+        case 'm':
+            break;
+        case 'F':
+        case 'f':
+            break;
+        case 'O':
+        case 'o':
+            break;
+        default:
+            printf("Invalid selection.\n");
+    }
+
+    printf("Enter weight (kg): ");
+    scanf("%f", &user->weight);
+
+    printf("Enter height (cm): ");
+    scanf("%f", &user->height);
+
+    printf("Enter contact number: ");
+    scanf(" %s", user->contactNumber);
+
+    int isValid = 0;
+        if (strlen(user->contactNumber) == 10) 
+    {
+        for (int i = 0; i < 10; i++) {
+            if (user->contactNumber[i] < '0' || user->contactNumber[i] > '9') 
+            {
+                isValid = 0;
+                break;
+            } 
+            else 
+            {
+                isValid = 1;
+            }
+        }
+    }
+
+    if (isValid) {
+        printf("Valid contact number.\n");
+    } else {
+        printf("Invalid contact number. It should be exactly 10 digits.\n");
+    }
+
+
+    printf("Enter mother's contact number: ");
+    scanf(" %s", user->motherContactNumber);
+
+    if (strlen(user->motherContactNumber) == 10) {
+        for (int i = 0; i < 10; i++) {
+            if (user->motherContactNumber[i] < '0' || user->motherContactNumber[i] > '9') {
+                isValid = 0;
+                break;
+            } else {
+                isValid = 1;
+            }
+        }
+    }
+
+    if (isValid) {
+        printf("Valid contact number.\n");
+    } else {
+        printf("Invalid contact number. It should be exactly 10 digits.\n");
+    }
+
+
+    printf("Enter father's contact number: ");
+    scanf(" %s", user->fatherContactNumber);
+
+    if (strlen(user->fatherContactNumber) == 10) {
+        for (int i = 0; i < 10; i++) {
+            if (user->fatherContactNumber[i] < '0' || user->fatherContactNumber[i] > '9') {
+                isValid = 0;
+                break;
+            } else {
+                isValid = 1;
+            }
+        }
+    }
+
+    if (isValid) {
+        printf("Valid contact number.\n");
+    } else {
+        printf("Invalid contact number. It should be exactly 10 digits.\n");
+    }
+}
+
+
+
+void selectBloodGroup() {
+    char bloodGroup[4];
+    printf("Enter your blood group from the below options:\n");
+    printf("[A+, B+, AB+, O+, A-, B-, AB-, O-]\n");
+    scanf("%s", bloodGroup);
+
+    if (strcmp(bloodGroup, "A+") == 0) {
+        printf("You have selected A+ blood group.\n");
+    } else if (strcmp(bloodGroup, "B+") == 0) {
+        printf("You have selected B+ blood group.\n");
+    } else if (strcmp(bloodGroup, "AB+") == 0) {
+        printf("You have selected AB+ blood group.\n");
+    } else if (strcmp(bloodGroup, "O+") == 0) {
+        printf("You have selected O+ blood group.\n");
+    } else if (strcmp(bloodGroup, "A-") == 0) {
+        printf("You have selected A- blood group.\n");
+    } else if (strcmp(bloodGroup, "B-") == 0) {
+        printf("You have selected B- blood group.\n");
+    } else if (strcmp(bloodGroup, "AB-") == 0) {
+        printf("You have selected AB- blood group.\n");
+    } else if (strcmp(bloodGroup, "O-") == 0) {
+        printf("You have selected O- blood group.\n");
+    } else {
+        printf("Invalid blood group selection.\n");
+    }
+}
+void asthma(int step,int oxygen)
+{
+    if ( step > 100) 
+    {
+    printf("Please slow down.\n");
+    }
+    if ( oxygen < 92) 
+    {
+        printf("Use Asthma Pump or go to hospital.\n");
+    }
+}
+void blood_pressure(int bp,int step)
+{
+    
+    if ( bp < 60 || bp > 100)
+    {
+        printf("Please go to the hospital");
+    }
+    if (step > 100)
+    {
+        printf("Slow down");
+    }
+}
+void diabetis(int sugar)
+{
+    if ( sugar > 140 || sugar < 70 )
+    {
+        printf("Please go to the hospital");
+    }
+}
+void copd(int oxygen)
+{
+    if ( oxygen < 88)
+    {
+        printf("Please go to the hospital");
+    }
+}
+void tuberclausis(int oxygen)
+{
+    if ( oxygen < 90)
+    {
+        printf("Please go to the hospital");
+    }
+}
+void pneumonia(int oxygen)
+{
+    if ( oxygen < 90)
+    {
+        printf("Please go to the hospital");
+    }
+}
+void pneumothorax(int oxygen)
+{
+    if ( oxygen < 92)
+    {
+        printf("Please go to the hospital");
+    }
+}
+void pulmonary_embolism(int oxygen)
+{
+    if (  oxygen < 95)
+    {
+        printf("Please go to the hospital");
+    }
+}
+void anemia(int oxygen)
+{
+    if ( oxygen <90)
+    {
+        printf("Please go to the hospital");
+    }
+}
+void heart_disease(int oxygen)
+{
+    if (oxygen<88)
+    {
+        printf("Please go to the hospital");
+    }
+}
+void congenital_heart_defects(int oxygen)
+{
+    if (oxygen<75)
+    {
+        printf("Please go to the hospital");
+    }
+}
+void sleep_apnea(int oxygen)
+{
+    if (oxygen<90)
+    {
+        printf("Please go to the hospital");
+    }
+}
+void hypoglycemia(int sugar)
+{
+    if (sugar>250 || sugar<40)
+    {
+        printf("Please go to the hospital");
+    }
+}
+void gestational_diabetis(int sugar)
+{
+    if (sugar>180)
+    {
+        printf("Please go to the hospital");
+    }
+}
+void impaired_fasting_glucose(int sugar)
+{
+    if (sugar>125 || sugar<100)
+    {
+        printf("Please go to the hospital");
+    }
+}
+void impaired_glucose_tolerence(int sugar)
+{
+    if (sugar>199 || sugar<140)
+    {
+        printf("Please go to the hospital");
+    }
+}
+void main() 
+{
+    char a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q;
+    int flag=0,x=90,y=100,z=100,oxygen,bp,step,sugar;
+    struct Person user;
+    collectUserData(&user);
+    selectBloodGroup();
+    printf("Do you have Asthama(Y/N)");
+    scanf("%s",&a);
+    printf("Do you have Blood pressure(Y/N)");
+    scanf("%s",&b);
+    printf("Do you have Diabetis(Y/N)");
+    scanf("%s",&c);
+    printf("Do you have COPD(Y/N)");
+    scanf("%s",&d);
+    printf("Do you have Tuberclausis(Y/N)");
+    scanf("%s",&e);
+    printf("Do you have Pneumonia(Y/N)");
+    scanf("%s",&f);
+    printf("Do you have oxygen_level_disease(Y/N)");
+    scanf("%s",&g);
+    printf("Do you have pneumothorax(Y/N)");
+    scanf("%s",&h);
+    printf("Do you have pulmonary_embolism(Y/N)");
+    scanf("%s",&i);
+    printf("Do you have anemia(Y/N)");
+    scanf("%s",&j);
+    printf("Do you have heart_disease(Y/N)");
+    scanf("%s",&k);
+    printf("Do you have congenital_heart_defects(Y/N)");
+    scanf("%s",&l);
+    printf("Do you have sleep_apnea(Y/N)");
+    scanf("%s",&m);
+    printf("Do you have hypoglycemia(Y/N)");
+    scanf("%s",&n);
+    printf("Do you have gestational_diabetis(Y/N)");
+    scanf("%s",&o);
+    printf("Do you have impaired_fasting_glucose(Y/N)");
+    scanf("%s",&p);
+    printf("Do you have impaired_glucose_tolerence(Y/N)");
+    scanf("%s",&q);
+    
+    
+    while (flag==0)
+    {
+        //-----------
+        srand(time(0));
+        int bp = (rand() % (140 - 41 + 1)) + 41;
+        printf("Blood Pressure: %d\n",bp);
+
+        srand(time(0));
+        int oxygen = (rand() % (100 - 50 + 1)) + 50;
+        printf("Oxygen Level: %d\n",oxygen);
+        
+        srand(time(0));
+        int step= (rand() % (111 - 10 + 1)) + 10;
+        printf("Steps: %d\n", step);
+
+        srand(time(0));
+        int lower = 40;
+        int upper = 300;
+        int sugar= (rand() % (upper - lower + 1)) + lower;
+        printf("Sugar Level %d\n",sugar);
+
+
+        //-------------
+        
+        if (a == 'Y' || a == 'y')
+        {
+            asthma(step,oxygen);
+        }
+        if (b == 'Y' || b == 'y')
+        {
+            blood_pressure(bp,step);
+        }
+        if (c == 'Y' || c == 'y')
+        {
+            diabetis(sugar);
+        }
+        if (d == 'Y' || d == 'y')
+        {
+            copd(sugar);
+        }
+        if (e == 'Y' || e == 'y')
+        {
+            tuberclausis(oxygen);
+        }
+        if (f == 'Y' || f == 'y')
+        {
+            pneumonia(oxygen);
+        }
+        if ( h== 'Y' || h == 'y')
+        {
+            pneumothorax(oxygen);
+        }
+        if (i == 'Y' || i == 'y')
+        {
+            pulmonary_embolism(oxygen);
+        }
+        if (j == 'Y' || j == 'y')
+        {
+            anemia(oxygen);
+        }
+        if (k == 'Y' || k == 'y')
+        {
+            heart_disease(oxygen);
+        }
+        if (l == 'Y' || l == 'y')
+        {
+            congenital_heart_defects(oxygen);
+        }
+        if (m == 'Y' || m == 'y')
+        {
+            sleep_apnea(oxygen);
+        }
+        if (n == 'Y' || n == 'y')
+        {
+            hypoglycemia(sugar);
+        }
+        if (o == 'Y' || o == 'y')
+        {
+            gestational_diabetis(sugar);
+        }
+        if (p == 'Y' || p == 'y')
+        {
+            impaired_fasting_glucose(sugar);
+        }
+        if (q == 'Y' || q == 'y')
+        {
+            impaired_glucose_tolerence(sugar);
+        }
+        sleep(5);
+    }
+}
